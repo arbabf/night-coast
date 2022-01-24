@@ -1,0 +1,13 @@
+//==================================
+// 			Night Coast FGD
+//==================================
+
+@include "base.fgd"
+@include "halflife2.fgd"
+
+// --------------------------------
+// 				Items
+// --------------------------------
+@PointClass base(Item) studio("models/items/car_battery01.mdl") = item_energymodule : "Energy Module" []
+@PointClass base(Item) studio("models/items/combine_rifle_ammo01.mdl") = item_longjump : "Long Jump Module" []
+@PointClass base(Item) studio("models/props_lab/jar01a.mdl") = item_morphine : "Morphine Shot" []
