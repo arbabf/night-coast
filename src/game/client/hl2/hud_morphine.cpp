@@ -35,7 +35,7 @@ protected:
 	virtual void Paint();
 
 private:
-	CPanelAnimationVar(vgui::HFont, m_hFont, "Font", "WeaponIconsSmall");
+	CPanelAnimationVar(vgui::HFont, m_hFont, "Font", "HudIcon");
 	CPanelAnimationVarAliasType(float, m_IconX, "icon_xpos", "4", "proportional_float");
 	CPanelAnimationVarAliasType(float, m_IconY, "icon_ypos", "4", "proportional_float");
 	int m_nNumMorphine;
@@ -62,11 +62,11 @@ void CHudMorphine::VidInit()
 }
 
 void CHudMorphine::Paint(){
-	wchar_t* wc = L"+";
+	wchar_t* wc = L"y";
 	surface()->DrawSetTextFont(m_hFont);
 	surface()->DrawSetTextColor(GetFgColor());
 	surface()->DrawSetTextPos(m_IconX, m_IconY);
-	surface()->DrawUnicodeChar(*wc); // why do you do this source, why must i create a pointer then immediately dereference it
+	surface()->DrawUnicodeChar(*wc); // why do you do this vgui, why must i create a pointer then immediately dereference it
 	BaseClass::Paint();
 }
 

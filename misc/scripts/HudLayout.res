@@ -148,19 +148,19 @@
 		"fieldName" "HudMorphine"
 		"xpos"	"258"
 		"ypos"	"432"
-		"wide"	"66"
+		"wide"	"50"
 		"tall"  "36"
 		"visible" "1"
 		"enabled" "1"
 
 		"PaintBackgroundType"	"2"
 		
-		"icon_xpos" "8"
-		"icon_ypos" "-13"
-		"digit_xpos" "40"
+		"icon_xpos" "0"
+		"icon_ypos" "-6"
+		"digit_xpos" "28"
 		"digit_ypos" "1"
 		
-		"font" "HudIcon"
+		"IconFont" "HudIcon"
 	}
 	HudPosture	[$WIN32]
 	{
@@ -253,7 +253,7 @@
 		"fieldName" "HudFlashlight"
 		"visible" "1"
 		"PaintBackgroundType"	"2"
-		"xpos"	"346"		[$WIN32]
+		"xpos"	"330"		[$WIN32]
 		"ypos"	"444"		[$WIN32]
 		"xpos_hidef"	"306"		[$X360]		// aligned to left
 		"xpos_lodef"	"c-18"		[$X360]		// centered in screen

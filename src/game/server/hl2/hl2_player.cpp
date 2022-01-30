@@ -82,7 +82,8 @@ ConVar sv_autojump( "sv_autojump", "0" );
 ConVar hl2_walkspeed( "hl2_walkspeed", "150" );
 ConVar hl2_normspeed( "hl2_normspeed", "190" );
 ConVar hl2_sprintspeed( "hl2_sprintspeed", "320" );
-ConVar hl2_ljump_powerdrain("hl2_ljump_powerdrain", "50");
+ConVar sk_ljump_powerdrain("sk_ljump_powerdrain", "50");
+ConVar sk_morphine("sk_morphine", "25");
 
 ConVar hl2_darkness_flashlight_factor ( "hl2_darkness_flashlight_factor", "1" );
 
@@ -383,6 +384,7 @@ BEGIN_DATADESC( CHL2_Player )
 	DEFINE_FIELD( m_hLocatorTargetEntity, FIELD_EHANDLE ),
 
 	DEFINE_FIELD( m_flTimeNextLadderHint, FIELD_TIME ),
+	DEFINE_FIELD(m_nNumMorphineCount, FIELD_INTEGER),
 
 	//DEFINE_FIELD( m_hPlayerProxy, FIELD_EHANDLE ), //Shut up class check!
 
@@ -567,6 +569,25 @@ void CHL2_Player::HandleArmorReduction( void )
 	int iArmor = Lerp( flPercent, m_iArmorReductionFrom, 0 );
 
 	SetArmorValue( iArmor );
+}
+
+void CHL2_Player::TakeMorphine(void){
+	if (!m_nNumMorphineCount){
+		PlayUseDenySound();
+	}
+	else{
+		m_nNumMorphineCount -= 1;
+		UTIL_EmitSoundSuit(edict(), "!HEV_HISS");
+		SetSuitUpdate("!HEV_MORPH", false, 3); // delay between these suit updates so we have to emitsoundsuit
+		if (GetHealth() > 100){
+			CTakeDamageInfo i = CTakeDamageInfo(this, this, 50, DMG_GENERIC);
+			TakeDamage(i);
+		}
+		else{
+			SetHealth(GetHealth() + 25);
+		} 
+		//TakeHealth(sk_morphine.GetFloat(), DMG_GENERIC);
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -838,6 +859,9 @@ void CHL2_Player::PreThink(void)
 		m_iTrain = TRAIN_NEW; // turn off train
 	}
 
+	if (m_afButtonPressed & IN_ALT1){
+		TakeMorphine();
+	}
 
 	//
 	// If we're not on the ground, we're falling. Update our falling velocity.

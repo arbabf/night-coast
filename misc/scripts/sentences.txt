@@ -1269,8 +1269,8 @@ HEV_HEAL5 hl1/fvox/(p140) boop, boop, boop, (p100) hiss, antidote_shot {Len 4.17
 HEV_HEAL6 hl1/fvox/(p140) boop, boop, boop, (p100) hiss, wound_sterilized {Len 4.16 closecaption HEV.wound_sterilized}
 HEV_HEAL7 hl1/fvox/(p140) boop, boop, boop, (p100) hiss, morphine_shot {Len 4.16 closecaption HEV.morphine_shot}
 HEV_HEAL8 hl1/fvox/(p140) boop, boop, boop, (p100) medical_repaired {Len 4.17 closecaption HEV.medical_repaired}
-HEV_HISS hl1/fvox/hiss {Len 0.50}
-HEV_MORPH hl1/fvox/morphine_shot {Len 1.50 closecaption HEV.morphine_shot}
+HEV_HISS hl1/fvox/hiss {Len 1.00}
+HEV_MORPH hl1/fvox/morphine_shot {Len 2.00 closecaption HEV.morphine_shot}
 
 HEV_DMG0 hl1/fvox/(p160) boop, boop, boop, (p100) minor_lacerations {Len 4.09 closecaption HEV.minor_lacerations}
 HEV_DMG1 hl1/fvox/(p160) boop, boop, boop, (p100) major_lacerations {Len 4.19 closecaption HEV.major_lacerations}
