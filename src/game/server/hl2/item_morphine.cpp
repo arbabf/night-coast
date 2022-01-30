@@ -40,16 +40,18 @@ void CItemMorphine::Precache(void){
 bool CItemMorphine::MyTouch(CBasePlayer *pPlayer){
 
 	CHL2_Player *hl2_player = dynamic_cast<CHL2_Player *>(pPlayer);
-	hl2_player->m_nNumMorphineCount += 1;
-	UTIL_Remove(this);
-	CPASAttenuationFilter filter(this, "WallHealth.Start");
-	EmitSound(filter, entindex(), "WallHealth.Start");
-	pPlayer->SetSuitUpdate("!HEV_MOAQ", false, 10);
-	CSingleUserRecipientFilter user(hl2_player);
-	user.MakeReliable();
+	if (hl2_player->m_nNumMorphineCount < 5){
+		hl2_player->m_nNumMorphineCount += 1;
+		UTIL_Remove(this);
+		CPASAttenuationFilter filter(this, "WallHealth.Start");
+		EmitSound(filter, entindex(), "WallHealth.Start");
+		pPlayer->SetSuitUpdate("!HEV_MOAQ", false, 10);
+		CSingleUserRecipientFilter user(hl2_player);
+		user.MakeReliable();
 
-	return true;
-
+		return true;
+	}
+	return false;
 }
 
 
